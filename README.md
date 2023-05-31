@@ -6,11 +6,11 @@ This is an A-Frame component, which demonstrates GLTF based point cloud transiti
 
 ### **Instructions**
 In order to use the component attach "gltf-transitions" to an entity with "gltf-model" component. The component has the following attributes: 
-* <b>pointSize: { type: "float", default: 0.2 }</b> - Size of the point cloud particles.
-* <b>pointColor: { type: "color", default: "#ffffff" }</b> - Color of the point cloud particles.
-* <b>pointOpacity: { type: "float", default: 1.0 }</b> - Opacity of the point cloud particles.
-* <b>pointMovement: { type: "string", default: "none" }</b> - If enabled point cloud particles move randomly in place. Has the following attributes: "none", "slow", "faster" and "fastest". 
-* <b>manualAnimation: { type: "boolean", default: false }</b> - If disabled it will be possible to move point cloud particles using mouse scroller. If enabled, it will play point cloud particles animation automatically. 
+* <b>pointSize: { type: "float", default: 0.2 }</b> - Size of the point cloud points.
+* <b>pointColor: { type: "color", default: "#ffffff" }</b> - Color of the point cloud points.
+* <b>pointOpacity: { type: "float", default: 1.0 }</b> - Opacity of the point cloud points.
+* <b>pointMovement: { type: "string", default: "none" }</b> - If enabled point cloud points move randomly in place. Has the following attributes: "none", "slow", "faster" and "fastest". 
+* <b>manualAnimation: { type: "boolean", default: false }</b> - If disabled it will be possible to move point cloud points using mouse scroller. If enabled, it will play point cloud points animation automatically. 
 * <b>pauseTime: { type: "float", default: 5 }</b> - the time each point cloud will remain visible before it transitions to another one. 
 
 The code below shows the sample implementation of the component:
@@ -53,7 +53,7 @@ The code below shows the sample implementation of the component:
 
 ### **Recommendations**
 Not all GLTF models will work equally well. It is important to prepare models beforehand. Make sure to do the following:
-* Number of faces of each GLTF file should be close to each other. This is required because generated point cloud particles of one GLTF will get transitioned to another one. And if there are less particles in the origin GLTF model, then target GLTF model's point cloud will not show completely.
+* Number of faces of each GLTF file should be close to each other. This is required because generated point cloud points of one GLTF will get transitioned to another one. And if there are less points in the origin GLTF model, then target GLTF model's point cloud will not show completely.
 * To make number of faces almost similar, use Blender's functionality for decimating geometry (when there is a need to reduce number of faces) or subdivide (to increase number of faces).
 * Make sure, if possible, to combine all meshes into single mesh. This will help in generating the point cloud.
 * The more faces are there in a GLTF model, the better it looks visually. However, the more faces also mean slower running experiences.
