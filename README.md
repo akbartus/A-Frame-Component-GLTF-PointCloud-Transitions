@@ -43,7 +43,16 @@ The code below shows the sample implementation of the component:
 </body>
 </html>
 ```
-Clipping plane gets activated after clicking on GTLF/entity. Then use mouse scroller. For touch based devices, first touch the GLTF and then touch and move up or down (drag).
+<b>Please note:</b> 
+* Gltf entity is not visible by default. If you want to see how 3D model and point cloud is located in 3d space, make it visible.
+* Make sure that there is only one gltf entity with id="origin" and at least one gltf entity with id="target".   
+* It is possible to change point cloud positions and rotations. If you decide to do so, please do make sure to make positions and rotatons the same for all gltf entities or just apply to the entity with id='origin'.   
+* It is possible, however, to apply different scales for different GLTF entities. 
+
+
+### **Recommendations for Better Performance**
+Not all GLTF models will work equally well. It is important to prepare models beforehand and take into account the following:
+
 
 ### **Tech Stack**
 The project is powered by AFrame and Three.js. The models used in the example were taken from <a href="[https://media.w3.org/2010/05/sintel/](https://github.com/mrdoob/three.js/tree/master/examples/models/gltf)">Three.js library</a>.
