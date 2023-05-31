@@ -47,15 +47,18 @@ The code below shows the sample implementation of the component:
 * Gltf entity is not visible by default. If you want to see how 3D model and point cloud is located in 3d space, make it visible.
 * Make sure that there is only one gltf entity with id="origin" and at least one gltf entity with id="target".   
 * It is possible to change point cloud positions and rotations. If you decide to do so, please do make sure to make positions and rotatons the same for all gltf entities or just apply to the entity with id='origin'.   
-* It is possible, however, to apply different scales for different GLTF entities. 
+* It is possible, however, to apply different scales for different GLTF entities.
+* Make sure to apply "gltf-transitions" component only to gltf entity with id="origin". 
 
 
-### **Recommendations for Better Performance**
-Not all GLTF models will work equally well. It is important to prepare models beforehand and take into account the following:
+### **Recommendations**
+Not all GLTF models will work equally well. It is important to prepare models beforehand. Make sure to do the following:
+* Number of faces of each GLTF file should be close to each other. This is required because generated point cloud particles of one GLTF will get transitioned to another one. And if there are less particles in the origin GLTF model, then target GLTF model's point cloud will not show completely.
+* To make number of faces almost similar, use Blender's functionality for decimating geometry (when there is a need to reduce number of faces) or subdivide (to increase number of faces).
+* Make sure, if possible, to combine all meshes into single mesh. This will help in generating the point cloud.
 
 
 ### **Tech Stack**
-The project is powered by AFrame and Three.js. The models used in the example were taken from <a href="[https://media.w3.org/2010/05/sintel/](https://github.com/mrdoob/three.js/tree/master/examples/models/gltf)">Three.js library</a>.
-
+The project is powered by AFrame and Three.js. The models used in the example were taken from Poly Pizza (<a href="https://poly.pizza/m/bHyQe5jzdiQ">House</a>, <a href="https://poly.pizza/m/2cAXk_gG3Eh">shoes</a>) and Three.js library.
 ### **Demo**
 See demo of the component here: [Demo](https://c-plane.glitch.me/)
