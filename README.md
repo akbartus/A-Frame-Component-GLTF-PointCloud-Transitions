@@ -57,8 +57,8 @@ Not all GLTF models will work equally well. It is important to prepare models be
 * To make number of faces almost similar, use Blender's functionality for decimating geometry (when there is a need to reduce number of faces) or subdivide (to increase number of faces).
 * Make sure, if possible, to combine all meshes into single mesh. This will help in generating the point cloud.
 
-
 ### **Tech Stack**
 The project is powered by AFrame and Three.js. The models used in the example were taken from Poly Pizza (<a href="https://poly.pizza/m/bHyQe5jzdiQ">House</a>, <a href="https://poly.pizza/m/2cAXk_gG3Eh">shoes</a>) and Three.js library.
+
 ### **Demo**
-See demo of the component here: [Demo](https://c-plane.glitch.me/)
+See demo of the component here: [Demo](https://pointcloud-transitions.glitch.me/)
