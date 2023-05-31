@@ -56,6 +56,7 @@ Not all GLTF models will work equally well. It is important to prepare models be
 * Number of faces of each GLTF file should be close to each other. This is required because generated point cloud particles of one GLTF will get transitioned to another one. And if there are less particles in the origin GLTF model, then target GLTF model's point cloud will not show completely.
 * To make number of faces almost similar, use Blender's functionality for decimating geometry (when there is a need to reduce number of faces) or subdivide (to increase number of faces).
 * Make sure, if possible, to combine all meshes into single mesh. This will help in generating the point cloud.
+* The more faces are there in a GLTF model, the better it looks visually. However, the more faces also mean slower running experiences.
 
 ### **Tech Stack**
 The project is powered by AFrame and Three.js. The models used in the example were taken from Poly Pizza (<a href="https://poly.pizza/m/bHyQe5jzdiQ">House</a>, <a href="https://poly.pizza/m/2cAXk_gG3Eh">shoes</a>) and Three.js library.
