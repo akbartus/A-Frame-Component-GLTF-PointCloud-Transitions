@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>A-Frame Component: GLTF PointCloud Transitions</title>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="js/gltf-transitions-component.js"></script>
+</head>
+<body>
+  <a-scene>
+    <a-entity visible="false" opacity="0" gltf-transitions
+      animation__rotate="property: rotation; dur: 30000; from: 0 0 0; to: 0 360 0; loop: true" id="origin"
+      position="0 0 0" rotation="0 90 0" gltf-model="models/shoes.glb" scale="0.1 0.1 0.1"></a-entity>
+
+    <a-entity visible="false" class="target" material="transparent: true; opacity: 0.1;"
+      animation__rotate="property: rotation; dur: 30000; from: 0 0 0; to: 0 360 0; loop: true" gltf-model="models/horse.glb"
+      scale="0.2 0.2 0.2"></a-entity>
+      <a-entity visible="false" class="target" material="transparent: true; opacity: 0.1;"
+      animation__rotate="property: rotation; dur: 30000; from: 0 0 0; to: 0 360 0; loop: true" gltf-model="models/stork.glb"
+      scale="0.4 0.4 0.4"></a-entity>
+      <a-entity visible="false" class="target" material="transparent: true; opacity: 0.1;"
+      animation__rotate="property: rotation; dur: 30000; from: 0 0 0; to: 0 360 0; loop: true" gltf-model="models/house.glb"
+      scale="1 1 1"></a-entity>
+    <a-camera position="-20 20 30"></a-camera>
+    <a-sky color="#000000"></a-sky>
+  </a-scene>
+</body>
+</html>
