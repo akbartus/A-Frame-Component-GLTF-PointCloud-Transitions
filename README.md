@@ -5,44 +5,42 @@
 This is an A-Frame component, which demonstrates GLTF based point cloud transitions. It was developed based on <a href="https://medium.com/@mahmed07041/3d-models-transitions-and-mouse-hovering-effects-threejs-664280bd8274">3D Models Transitions and Mouse Hovering Effects — ThreeJS</a> article on Medium.com and Austin Mayer's <a href="https://twitter.com/amayer_/status/1098662776929693706">portfolio project</a>.
 
 ### **Instructions**
-In order to use the component attach "clipping-plane" to an entity. The component has the following attributes: 
-* <b>clippingDirection: { type: 'string', default: 'top-to-bottom' }</b> - Direction of the clipping plane or from where it should move. Has the following options: "top-to-bottom" (on Y-axis), "bottom-to-top" (on Y-axis), "front-to-back" (on Z-axis), "back-to-front" (on Z-axis), "left-to-right" (on X-axis), "right-to-left" (on X-axis).  
-* <b>materialSide: { type: 'boolean' }</b> - Whether mesh should have double sided material.
-* <b>planeConstant: { type: 'float', default: 2.0 }</b> // Original clipping plane location on X or Y or Z axis depending on clipping plane direction. It is from where it starts.
-* <b>minScrollValue: { type: 'float', default: -2.0 }</b> - Minimal value beyond which clipping plane will not go. X or Y or Z axis depending on clipping plane direction.
-* <b>maxScrollValue: { type: 'float', default: 2.0 }</b> - Maximal value beyond which clipping plane will not go. X or Y or Z axis depending on clipping plane direction.
-* <b>mouseScrollSpeed: { type: 'float', default: 0.0005 }</b> - Mouse scrolling speed or delta. 
-* <b>touchScrollSpeed: { type: 'float', default: 0.01 }</b> - Touch based scrolling speed or delta.
+In order to use the component attach "gltf-transitions" to an entity with "gltf-model" component. The component has the following attributes: 
+* <b>pointSize: { type: "float", default: 0.2 }</b> - Size of the point cloud particles.
+* <b>pointColor: { type: "color", default: "#ffffff" }</b> - Color of the point cloud particles.
+* <b>pointOpacity: { type: "float", default: 1.0 }</b> - Opacity of the point cloud particles.
+* <b>pointMovement: { type: "string", default: "none" }</b> - If enabled point cloud particles move randomly in place. Has the following attributes: "none", "slow", "faster" and "fastest". 
+* <b>manualAnimation: { type: "boolean", default: false }</b> - If disabled it will be possible to move point cloud particles using mouse scroller. If enabled, it will play point cloud particles animation automatically. 
+* <b>pauseTime: { type: "float", default: 5 }</b> - the time each point cloud will remain visible before it transitions to another one. 
 
-The code below shows the sample implementation of the component. Please make sure to add 'a-camera' to enable scrolling/touch move events:
+The code below shows the sample implementation of the component:
 ```
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>A-Frame Component: Clipping Plane</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
-    <script src="js/clipping-plane-component.js"></script>
+  <meta charset="UTF-8" />
+  <title>A-Frame Component: GLTF Based PointCloud Transitions</title>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="js/gltf-transitions-component.js"></script>
 </head>
-
 <body>
-    <a-scene>
-        <a-entity position="0 1 -2" scale="50 50 50" gltf-model="src: url(models/toyCar.glb);"
-            clipping-plane="clippingDirection: top-to-bottom;" class="clickable"></a-entity>
-        <a-entity position="2 0.2 -2" scale="1 1 1" gltf-model="src: url(models/sheenChair.glb);"
-            clipping-plane="clippingDirection: bottom-to-top;" class="clickable"></a-entity>
-        <a-entity id="model" class="clickable" clipping-plane="clippingDirection: left-to-right; materialSide: true;"
-            geometry="primitive: box" position="3 1 0" scale="1 1 1"></a-entity>
-        <a-entity id="model2" class="clickable" clipping-plane="clippingDirection: right-to-left; materialSide: true;"
-            geometry="primitive: box" position="-2 1 0"></a-entity>
-        <a-plane position="0 0 -1" rotation="-90 0 0" width="8" height="8" color="#a4b6c9"
-            shadow="receive: true"></a-plane>
-        <a-camera position="0 2 2.5"></a-camera> <!-- Required for click events -->
-        <a-sky color="#dfdfdf"></a-sky>
-    </a-scene>
+  <a-scene>
+    <a-entity visible="false" opacity="0" gltf-transitions="pointSize: 0.3; pointColor: #ffffff; pointOpacity: 0.5; pointMovement: slow; manualAnimation: false; pauseTime: 3"
+      animation__rotate="property: rotation; dur: 30000; from: 0 0 0; to: 0 360 0; loop: true" id="origin"
+      position="0 0 0" rotation="0 0 0" gltf-model="models/shoes.glb" scale="0.1 0.1 0.1"></a-entity>
+    <a-entity visible="false" class="target" material="transparent: true; opacity: 0.1;"
+      animation__rotate="property: rotation; dur: 30000; from: 0 0 0; to: 0 360 0; loop: true" gltf-model="models/horse.glb"
+      scale="0.2 0.2 0.2"></a-entity>
+      <a-entity visible="false" class="target" material="transparent: true; opacity: 0.1;"
+      animation__rotate="property: rotation; dur: 30000; from: 0 0 0; to: 0 360 0; loop: true" gltf-model="models/stork.glb"
+      scale="0.4 0.4 0.4"></a-entity>
+      <a-entity visible="false" class="target" material="transparent: true; opacity: 0.1;"
+      animation__rotate="property: rotation; dur: 30000; from: 0 0 0; to: 0 360 0; loop: true" gltf-model="models/house.glb"
+      scale="1 1 1"></a-entity>
+    <a-camera position="-20 20 30"></a-camera>
+    <a-sky color="#000000"></a-sky>
+  </a-scene>
 </body>
-
 </html>
 ```
 Clipping plane gets activated after clicking on GTLF/entity. Then use mouse scroller. For touch based devices, first touch the GLTF and then touch and move up or down (drag).
