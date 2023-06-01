@@ -89,7 +89,6 @@ AFRAME.registerComponent("gltf-transitions", {
                   3
                 )
               );
-              // Scale the target2 positions
               const scale = targetModel[j].object3D.scale.x;
               targetPositionsArray[j] =
                 targetGeometryArray[j].attributes.position.array;
